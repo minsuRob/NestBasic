@@ -1,13 +1,23 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, Body, Patch } from '@nestjs/common';
 
 @Controller('movies')
 export class MoviesController {
+
     @Get()
-    getAll() {
-        return "this get all"
+    getAll(@Body() movieData) {
+        return movieData;
     }
     @Get("/:id")
     getID(@Param("id") id:string) {
-        return `id : ${id}`
+        return `id : ${id}` 
     }
+
+    @Patch()
+    getPatch(@Body() movieData) {
+        return {
+            ...movieData,
+            "patchData" : "zz"
+        } 
+    }
+
 }
