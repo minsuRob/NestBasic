@@ -14,7 +14,7 @@ export class RestaurantService {
     }
 
     createRestaurant(createRestaurantDto: createRestaurantDto): Promise<Restaurant> {
-        const newRestaurant = this.restaurant.create();
+        const newRestaurant = this.restaurant.create(createRestaurantDto);
         return this.restaurant.save(newRestaurant);
     }
 
