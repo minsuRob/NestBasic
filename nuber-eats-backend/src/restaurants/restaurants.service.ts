@@ -20,7 +20,7 @@ export class RestaurantService {
     }
 
     updateRestaurant({id, data}:UpdateRestaurantDto){
-        this.restaurant.update(id, {...data});
+        return this.restaurant.update(id, {...data});
     }
 
 } 
