@@ -15,5 +15,19 @@ export class Restaurant {
     
     @Field(type => Boolean, {nullable:true})
     @Column()
-    isGood?: boolean;
+    isVegan?: boolean;
+    
+    @Field(type => String)
+    @Column()
+    address: string;
+    
+    @Field(type => String)
+    @Column()
+    ownersName: string;
+    
+    @Field(type => String)
+    @Column()
+    categoryName: string;
+    
+    
 }
