@@ -6,6 +6,9 @@ import { RestaurantsModule } from './restaurants/restaurants.module';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { ConfigModule } from '@nestjs/config';
 import { Restaurant } from './restaurants/entities/restaurant.entity';
+import { UsersModule } from './users/users.module';
+import { CommonModule } from './common/common.module';
+import { User } from './users/entities/user.entity';
 
 @Module({
   imports: [
@@ -23,12 +26,15 @@ import { Restaurant } from './restaurants/entities/restaurant.entity';
       database: "nuber-eats",
       synchronize: true,
       logging: true,
-      entities: [Restaurant],
+      entities: [User],
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
     driver: ApolloDriver,
     autoSchemaFile: true,
-  }), RestaurantsModule],
+  }), 
+  UsersModule,
+  CommonModule,
+],
   controllers: [],
   providers: [],
 })
