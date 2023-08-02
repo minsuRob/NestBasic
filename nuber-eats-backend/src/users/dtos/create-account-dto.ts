@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { Field, InputType, ObjectType, PickType } from '@nestjs/graphql';
 import { User } from '../entities/user.entity';
 
