@@ -1,7 +1,8 @@
 /* eslint-disable */
-import { Query, Resolver } from "@nestjs/graphql";
+import { Args, Mutation, Query, Resolver } from "@nestjs/graphql";
 import { usersService } from "./users.service";
 import { User } from "./entities/user.entity";
+import { CreateAccountInput, CreateAccountOutput } from "./dtos/create-account-dto";
 
 @Resolver(of => User)
 export class UsersResolver {
@@ -13,4 +14,7 @@ export class UsersResolver {
     hi() {
         return true;
     }
+
+    @Mutation(returns => CreateAccountOutput)
+    createAccount(@Args('input') createAccountInput:CreateAccountInput) {}
 }
