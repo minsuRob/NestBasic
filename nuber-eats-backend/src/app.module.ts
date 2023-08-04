@@ -9,6 +9,10 @@ import { Restaurant } from './restaurants/entities/restaurant.entity';
 import { UsersModule } from './users/users.module';
 import { CommonModule } from './common/common.module';
 import { User } from './users/entities/user.entity';
+import { Hotel } from './hotels/entities/hotel.entity';
+import { HotelModule } from './hotels/hotels.module';
+import { Window } from './windows/entities/window.entity';
+import { WindowModule } from './windows/windows.module';
 
 @Module({
   imports: [
@@ -26,7 +30,7 @@ import { User } from './users/entities/user.entity';
       database: "nuber-eats",
       synchronize: true,
       logging: true,
-      entities: [User],
+      entities: [User, Hotel, Window],
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
     driver: ApolloDriver,
@@ -34,6 +38,8 @@ import { User } from './users/entities/user.entity';
   }), 
   UsersModule,
   CommonModule,
+  HotelModule,
+  WindowModule,
 ],
   controllers: [],
   providers: [],
