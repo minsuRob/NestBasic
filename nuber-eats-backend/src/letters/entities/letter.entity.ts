@@ -4,40 +4,31 @@ import { IsString, Length } from 'class-validator';
 import { CoreEntity } from 'src/common/entities/core.entity';
 import { User } from 'src/users/entities/user.entity';
 import { Window } from 'src/windows/entities/window.entity';
-import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from 'typeorm';
 //import { Category } from './cetegory.entity';
 
-@InputType('HotelInputType', { isAbstract: true })
+@InputType('LetterInputType', { isAbstract: true })
 @ObjectType()
 @Entity()
-export class Hotel extends CoreEntity {
+export class Letter extends CoreEntity {
   @Field(type => String)
   @Column()
   @IsString() 
   @Length(12)
-  nickname: string;
+  sender: string;
 
   @Field(type => String)
   @Column()
   @IsString()
-  description: string;
+  content: string;
 
-  @Field(type => String, { defaultValue: '#FFFFFF' })
-  @Column()
-  @IsString()
-  headColor: string;
-
-  @Field(type => String, { defaultValue: '#FFFFFF' })
-  @Column()
-  @IsString()
-  bodyColor: string;
-
-  @OneToMany((type) => Window, (window) => window.hotel)
-  windows: Window[];
-
-  @OneToOne(type => User)
-  @JoinColumn()
-  user: User;
+//   @Field(type => User)
+//   @ManyToOne(
+//     type => User,
+//     (user) => user.letters,
+//   )
+//   @JoinColumn()
+//   user: User;
   
   /*@Field(type => Category, { nullable: true })
   @ManyToOne(

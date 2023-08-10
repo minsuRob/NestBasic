@@ -1,10 +1,11 @@
 /* eslint-disable */
 import { Field, InputType, ObjectType, registerEnumType } from "@nestjs/graphql";
 import { CoreEntity } from "src/common/entities/core.entity";
-import { BeforeInsert, Column, Entity } from "typeorm";
+import { BeforeInsert, Column, Entity, OneToMany, OneToOne } from "typeorm";
 import * as bcrypt from 'bcrypt';
 import { InternalServerErrorException } from "@nestjs/common";
 import { IsEmail, IsEnum } from "class-validator";
+import { Letter } from "src/letters/entities/letter.entity";
 
 enum UserRole {
     Client,
@@ -42,5 +43,8 @@ export class User extends CoreEntity {
             throw new InternalServerErrorException();
         }
     }
+
+    // @OneToMany(() => Letter, (letter) => letter.user)
+    // letters: Letter[];
 
 }

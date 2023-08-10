@@ -3,7 +3,7 @@ import { Field, InputType, ObjectType } from '@nestjs/graphql';
 import { IsBoolean, IsNumber, IsString, Length } from 'class-validator';
 import { CoreEntity } from 'src/common/entities/core.entity';
 import { Hotel } from 'src/hotels/entities/hotel.entity';
-import { Column, Entity, ManyToOne } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
 //import { Category } from './cetegory.entity';
 
 @InputType('WindowInputType', { isAbstract: true })
@@ -31,6 +31,7 @@ export class Window extends CoreEntity {
     type => Hotel,
     hotel => hotel.windows,
   )
+  @JoinColumn()
   hotel: Hotel;
   /*@Field(type => Category, { nullable: true })
   @ManyToOne(
